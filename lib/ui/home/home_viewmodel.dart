@@ -1,4 +1,5 @@
 import 'package:flutter_sms_inbox/flutter_sms_inbox.dart';
+import 'package:ksms/app/locator.dart';
 import 'package:ksms/models/chat_model.dart';
 import 'package:ksms/services/chats_service.dart';
 import 'package:ksms/ui/chatview/chatview_view.dart';
@@ -6,9 +7,10 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends FutureViewModel<List<SmsMessage>> {
+  final NavigationService _navigationService = locator<NavigationService>();
+  final ChatService _chatService = locator<ChatService>();
+
   final SmsQuery smsService = SmsQuery();
-  final ChatService _chatService = ChatService();
-  final NavigationService _navigationService = NavigationService();
 
   String _searchValue;
 

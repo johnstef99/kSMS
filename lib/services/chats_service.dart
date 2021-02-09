@@ -1,9 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter_sms_inbox/flutter_sms_inbox.dart';
+import 'package:injectable/injectable.dart';
 import 'package:ksms/models/chat_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+@lazySingleton
 class ChatService {
   SharedPreferences prefs;
 
