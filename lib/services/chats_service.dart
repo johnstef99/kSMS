@@ -56,7 +56,7 @@ class ChatService {
     list.add(
       SmsMessage(
         '13033',
-        'ΜΕΤΑΚΙΝΙΣΗ $_number $_name $_address',
+        'ΜΕΤΑΚΙΝΗΣΗ $_number $_name $_address',
         kind: SmsMessageKind.Received,
         date: DateTime.now().subtract(Duration(minutes: randomMin)),
       ),

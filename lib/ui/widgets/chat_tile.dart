@@ -48,6 +48,8 @@ class ChatTile extends StatelessWidget {
     Duration dif = DateTime.now().difference(smsDate);
     if (dif.inDays == 1)
       return ' χθές';
+    else if (dif.inDays <= 7)
+      return weekday2String(smsDate.weekday);
     else if (dif.inDays > 1)
       return '${smsDate.day}/${smsDate.month}';
     else if (dif.inHours == 1)
@@ -60,5 +62,24 @@ class ChatTile extends StatelessWidget {
       return dif.inMinutes.toString() + ' λεπτά';
     else
       return dif.inSeconds.toString() + ' δευτ';
+  }
+
+  String weekday2String(int day) {
+    switch (day) {
+      case 1:
+        return 'Δευτ';
+      case 2:
+        return 'Τριτη';
+      case 3:
+        return 'Τεταρ';
+      case 4:
+        return 'Πέμ';
+      case 5:
+        return 'Παρ';
+      case 6:
+        return 'Σάβ';
+      case 7:
+        return 'Κυρ';
+    }
   }
 }
