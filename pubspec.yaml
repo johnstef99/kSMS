@@ -1,7 +1,7 @@
 name: ksms
 description: Koulis SMS
 
-version: 1.0.0+7
+version: 1.0.0+8
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

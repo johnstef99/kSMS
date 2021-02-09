@@ -48,7 +48,7 @@ class ChatTile extends StatelessWidget {
     Duration dif = DateTime.now().difference(smsDate);
     if (dif.inDays == 1)
       return ' χθές';
-    else if (dif.inDays <= 7)
+    else if (dif.inDays > 1 && dif.inDays <= 7)
       return weekday2String(smsDate.weekday);
     else if (dif.inDays > 1)
       return '${smsDate.day}/${smsDate.month}';
