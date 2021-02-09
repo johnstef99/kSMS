@@ -11,6 +11,9 @@ app it seems that you have sent a message to 13033 20-40 minutes ago.
 - Tap the more icon on the right and select **Set Name**
 - repeat for the rest of your info
 
+## Download
+Get the latest release for your device [here](https://github.com/johnstef99/kSMS/releases)
+
 ## Screenshots
 <img src="./screenshots/home.jpg" width="250">
 <img src="./screenshots/chatview.jpg" width="250">
