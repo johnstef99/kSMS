@@ -10,3 +10,7 @@ app it seems that you send a message to 13033 20-40 minutes ago.
 - Write your name in the searchbar
 - Tap the more icon on the right and select **Set Name**
 - repeat for the rest of your info
+
+## Screenshots
+![](./screenshots/home.jpg)
+![](./screenshots/chatview.jpg)
