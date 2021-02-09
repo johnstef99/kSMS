@@ -12,43 +12,57 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
+      onModelReady: (model) => model.init(),
       builder: (context, model, child) => GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
         },
         child: Scaffold(
-          body: SafeArea(
-              child: CustomScrollView(
-            slivers: [
-              SliverSafeArea(
-                sliver: SliverPadding(
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                  sliver: SliverAppBar(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    floating: true,
-                    forceElevated: true,
-                    backgroundColor: Colors.white,
-                    title: _SearchBar(),
+          body: model.hasError
+              ? Center(
+                  child: ElevatedButton(
+                    child: Text('Tap to grant sms permissions'),
+                    onPressed: model.grantPerm,
                   ),
-                ),
-              ),
-              model.isBusy
-                  ? SliverFillRemaining()
-                  : SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (context, i) {
-                          return ChatTile(
-                            chat: model.chats[i],
-                            onTap: () => model.gotoChat(model.chats[i]),
-                          );
-                        },
-                        childCount: model.chats.length,
+                )
+              : SafeArea(
+                  child: CustomScrollView(
+                  slivers: [
+                    SliverSafeArea(
+                      sliver: SliverPadding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                        sliver: SliverAppBar(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          floating: true,
+                          forceElevated: true,
+                          backgroundColor: Colors.white,
+                          title: _SearchBar(),
+                        ),
                       ),
                     ),
-            ],
-          )),
+                    model.isBusy
+                        ? SliverFillRemaining(
+                            hasScrollBody: false,
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          )
+                        : SliverList(
+                            delegate: SliverChildBuilderDelegate(
+                              (context, i) {
+                                return ChatTile(
+                                  chat: model.chats[i],
+                                  onTap: () => model.gotoChat(model.chats[i]),
+                                );
+                              },
+                              childCount: model.chats.length,
+                            ),
+                          ),
+                  ],
+                )),
         ),
       ),
     );
