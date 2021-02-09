@@ -12,5 +12,5 @@ app it seems that you send a message to 13033 20-40 minutes ago.
 - repeat for the rest of your info
 
 ## Screenshots
-![](./screenshots/home.jpg)
-![](./screenshots/chatview.jpg)
+<img src="./screenshots/home.jpg" width="250">
+<img src="./screenshots/chatview.jpg" width="250">
