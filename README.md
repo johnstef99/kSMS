@@ -2,8 +2,8 @@
 
 **k stands for Koulis**
 
-Saves your name, address and the last code [1-6] you set, so every time you open the
-app it seems that you send a message to 13033 20-40 minutes ago.
+Saves your name, address and the last code [1-6] you setted, so every time you open the
+app it seems that you have sent a message to 13033 20-40 minutes ago.
 
 ## How to use
 
