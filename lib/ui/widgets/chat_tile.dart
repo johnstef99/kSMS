@@ -49,7 +49,7 @@ class ChatTile extends StatelessWidget {
     if (dif.inDays == 1)
       return ' χθές';
     else if (dif.inDays > 1)
-      return dif.inDays.toString() + ' ${smsDate.day}/${smsDate.month}';
+      return '${smsDate.day}/${smsDate.month}';
     else if (dif.inHours == 1)
       return dif.inHours.toString() + ' ώρα';
     else if (dif.inHours > 1)
