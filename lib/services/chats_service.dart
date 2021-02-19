@@ -48,27 +48,38 @@ class ChatService {
         .compareTo(a.lastSms.date.millisecondsSinceEpoch));
   }
 
+  List<SmsMessage> smsPair(DateTime dateTime, String number) => [
+        SmsMessage(
+          '13033',
+          'ΜΕΤΑΚΙΝΗΣΗ $number $_name $_address',
+          kind: SmsMessageKind.Received,
+          date: dateTime,
+        ),
+        SmsMessage(
+          '13033',
+          '$number $_name $_address',
+          kind: SmsMessageKind.Sent,
+          date: dateTime.add(
+            Duration(minutes: 1),
+          ),
+        ),
+      ];
+
   koulisAI() async {
     await getSavedData();
     int randomMin = Random().nextInt(20) + 20;
     var list = _chats.firstWhere((c) => c.sender == '13033').smsList;
     list.clear();
-    list.add(
-      SmsMessage(
-        '13033',
-        'ΜΕΤΑΚΙΝΗΣΗ $_number $_name $_address',
-        kind: SmsMessageKind.Received,
-        date: DateTime.now().subtract(Duration(minutes: randomMin)),
-      ),
-    );
-    list.add(
-      SmsMessage(
-        '13033',
-        '$_number $_name $_address',
-        kind: SmsMessageKind.Sent,
-        date: DateTime.now().subtract(Duration(minutes: randomMin + 1)),
-      ),
-    );
+    DateTime n = DateTime.now();
+    list.addAll(smsPair(n.subtract(Duration(minutes: randomMin)), _number));
+    int extraSms = Random().nextInt(4) + 2; //[2-6]
+    var numbers = ["2", "6"];
+    for (int i = 0; i != extraSms; i++) {
+      int ranMin = Random(i).nextInt(120) + 30;
+      String numb = numbers[Random(i).nextInt(2)];
+      list.addAll(
+          smsPair(n.subtract(Duration(minutes: ranMin, days: i + 1)), numb));
+    }
     sortChats();
   }
 }
