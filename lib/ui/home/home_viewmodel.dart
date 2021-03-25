@@ -1,5 +1,6 @@
 import 'package:flutter_sms_inbox/flutter_sms_inbox.dart';
-import 'package:ksms/app/locator.dart';
+import 'package:ksms/app/app.locator.dart';
+import 'package:ksms/app/app.router.dart';
 import 'package:ksms/models/chat_model.dart';
 import 'package:ksms/services/chats_service.dart';
 import 'package:ksms/ui/chatview/chatview_view.dart';
@@ -44,9 +45,12 @@ class HomeViewModel extends BaseViewModel {
   }
 
   Future<void> menuSelect(String value) async {
-    _chatService.setData(value, _searchValue);
-    await _chatService.koulisAI();
-    notifyListeners();
+    if (value == 'Settings') {
+      await _navigationService.navigateTo(Routes.settingsView);
+      await _chatService.koulisAI();
+      notifyListeners();
+      return 0;
+    }
   }
 
   void searchChanged(String value) {

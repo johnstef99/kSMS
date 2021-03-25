@@ -1,10 +1,13 @@
-import 'package:ksms/app/locator.dart';
-import 'package:ksms/app/router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:ksms/app/app.locator.dart';
+import 'package:ksms/app/app.router.dart';
+import 'package:ksms/ui/widgets/customDialogs.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-void main() {
-  setupLocator();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupLocator();
+  registerDialogs();
   runApp(MyApp());
 }
 
@@ -18,8 +21,16 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       navigatorKey: StackedService.navigatorKey,
-      onGenerateRoute: MyRouter(),
-      initialRoute: Routes.homeView,
+      onGenerateRoute: StackedRouter().onGenerateRoute,
     );
   }
+}
+
+void registerDialogs() {
+  final dialogService = locator<DialogService>();
+
+  dialogService.registerCustomDialogBuilders({
+    DialogType.form: (context, request, completer) =>
+        FormDialog(request, completer),
+  });
 }

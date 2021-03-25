@@ -82,16 +82,8 @@ class _MoreIcon extends ViewModelWidget<HomeViewModel> {
       onSelected: model.menuSelect,
       itemBuilder: (context) => <PopupMenuEntry<String>>[
         PopupMenuItem(
-          value: 'name',
-          child: Text('Set Name'),
-        ),
-        PopupMenuItem(
-          value: 'address',
-          child: Text('Set address'),
-        ),
-        PopupMenuItem(
-          value: 'number',
-          child: Text('Set number'),
+          value: 'Settings',
+          child: Text('Settings'),
         ),
       ],
     );
@@ -106,7 +98,6 @@ class _SearchBar extends HookViewModelWidget<HomeViewModel> {
     var controller = useTextEditingController();
     return TextField(
       controller: controller,
-      onChanged: model.searchChanged,
       decoration: InputDecoration(
         hintText: 'Search messages',
         suffixIcon: _MoreIcon(),
