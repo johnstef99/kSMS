@@ -7,12 +7,12 @@ app it seems that you have sent a message to 13033 20-40 minutes ago.
 
 ## How to use
 
-- Write your name in the searchbar
-- Tap the more icon on the right and select **Set Name**
-- repeat for the rest of your info
+- Tap the more icon on the right and go to **Settings**
+- Set everything up just one time, and you are ready to go
 
 ## Download
-Get the latest release for your device [here](https://github.com/johnstef99/kSMS/releases)
+Get the latest release for your device [here](https://github.com/johnstef99/kSMS/releases).
+If you are not sure what to download try the _arm64-v8a_ version
 
 ## Screenshots
 <img src="./screenshots/chat_view.jpg" width="250">
